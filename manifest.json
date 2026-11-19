@@ -1,0 +1,16 @@
+{
+  "name": "handlevault-mail-stamps",
+  "codename": "Crispy Garbanzo",
+  "version": "0.1.0",
+  "description": "Emoji mail stamp catalog, message renderer, and Gumroad flash-message module for HandleVault OS (Mail + Store).",
+  "entry": "index.html",
+  "catalog": "stamps.json",
+  "renderer": "app.js",
+  "art_mode": "native-unicode-emoji-badges",
+  "tiers": ["free", "premium", "custom_fee"],
+  "host_integration": {
+    "mode": "standalone-module",
+    "modifies_core_os": false,
+    "requires_frozen_index_untouched": true
+  }
+}
