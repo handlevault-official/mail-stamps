@@ -37,12 +37,12 @@
       "emoji": "💌",
       "badge_style": "wax-crimson",
       "tier": "premium",
-      "price_label": "₱1 local / $1 abroad",
-      "price_local_php": 1,
+      "price_label": "₱29 pack / ₱5 add-on ($1 abroad)",
+      "price_local_php": 29,
       "price_abroad_usd": 1,
       "allow_add_on": true,
       "can_render_in_message": true,
-      "flash_message": "Wax Seal Heart (₱1 local / $1 abroad) — gusto mo ng stamp para sa mga dispatch mo? Silipin ang pack sa Gumroad.",
+      "flash_message": "Wax Seal Heart — may ₱29 pack o ₱5 add-on local ($1 abroad) sa Gumroad para mas sulit at iwas-fee.",
       "gumroad_url": "https://gumroad.com/"
     },
     {
@@ -51,12 +51,12 @@
       "emoji": "⭐",
       "badge_style": "wax-gold",
       "tier": "premium",
-      "price_label": "₱1 local / $1 abroad",
-      "price_local_php": 1,
+      "price_label": "₱29 pack / ₱5 add-on ($1 abroad)",
+      "price_local_php": 29,
       "price_abroad_usd": 1,
       "allow_add_on": true,
       "can_render_in_message": true,
-      "flash_message": "Starlight Seal (₱1 local / $1 abroad) — available sa Gumroad para sa mga special mail drops mo.",
+      "flash_message": "Starlight Seal — available sa Gumroad (₱29 pack / ₱5 add-on local, $1 abroad) para sa special mail drops mo.",
       "gumroad_url": "https://gumroad.com/"
     },
     {
@@ -65,12 +65,12 @@
       "emoji": "✨",
       "badge_style": "custom-border",
       "tier": "custom_fee",
-      "price_label": "₱1–₱5+ local / $1+ abroad",
-      "price_local_php": 1,
-      "price_abroad_usd": 1,
+      "price_label": "₱49+ custom / ₱5 add-on ($2–$5+ abroad)",
+      "price_local_php": 49,
+      "price_abroad_usd": 2,
       "allow_add_on": true,
       "can_render_in_message": false,
-      "flash_message": "Custom Mail Stamp (₱1–₱5+ local / $1+ abroad) — may gusto kang custom emoji stamp o dagdag na ambag? Silipin ang option sa Gumroad.",
+      "flash_message": "Custom Mail Stamp — ₱49+ custom local (may ₱5 add-on) o $2–$5+ abroad sa Gumroad.",
       "gumroad_url": "https://gumroad.com/"
     }
   ]
