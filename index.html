@@ -1,177 +1,266 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="tl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HandleVault Mail Stamps</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HandleVault Mail &amp; Wax Stamps</title>
   <style>
     :root {
-      --bg-paper: #faf6ef;
-      --bg-card: #fffdf9;
-      --ink-dark: #231f20;
-      --ink-muted: #5c534c;
-      --crimson: #8f2d3c;
-      --gold: #b45309;
-      --border-soft: #dfd5c5;
-      --flash-bg: #fef3c7;
+      --bg: #0c111d;
+      --panel: #131b2e;
+      --panel-2: #19243d;
+      --text: #eef2ff;
+      --muted: #9aa7c7;
+      --line: #283655;
+      --gold: #f5c451;
+      --crimson: #e05a70;
+      --mint: #63dfb8;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      padding: 24px 16px;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg-paper);
-      color: var(--ink-dark);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.5;
     }
 
-    .stamp-app {
-      max-width: 720px;
+    .wrap {
+      max-width: 960px;
       margin: 0 auto;
+      padding: 28px 18px 60px;
     }
 
-    .stamp-header {
+    h1 { margin: 0 0 6px; font-size: 1.65rem; }
+    .sub { margin: 0 0 22px; color: var(--muted); font-size: 0.95rem; }
+
+    .section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
       margin-bottom: 18px;
     }
 
-    .stamp-header h1 {
-      margin: 0 0 4px;
-      font-size: 1.5rem;
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: 1.05rem;
+      color: var(--gold);
     }
 
-    .stamp-header p {
-      margin: 0;
-      color: var(--ink-muted);
-      font-size: 0.95rem;
-    }
-
-    .stamp-grid {
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
       gap: 12px;
-      margin-bottom: 18px;
     }
 
-    .stamp-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      padding: 14px 10px;
-      border: 2px dashed var(--crimson);
-      border-radius: 10px;
-      background: var(--bg-card);
-      color: var(--ink-dark);
+    .hv-stamp-card {
+      text-align: left;
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      color: var(--text);
       cursor: pointer;
-      text-align: center;
-      transition: transform 0.12s ease, background-color 0.12s ease;
+      transition: transform 0.15s ease, border-color 0.15s ease;
     }
 
-    .stamp-card:hover,
-    .stamp-card:focus-visible {
-      background: #fff3dc;
-      transform: translateY(-1px);
-      outline: none;
+    .hv-stamp-card:hover { transform: translateY(-2px); border-color: #6b82b8; }
+    .hv-stamp-card.is-selected { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold); }
+
+    .hv-stamp-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
     }
 
-    .stamp-emoji {
-      font-size: 1.75rem;
-      line-height: 1.2;
-    }
-
-    .stamp-title {
-      font-size: 0.92rem;
-    }
-
-    .stamp-tier {
+    .hv-stamp-emoji-lg { font-size: 1.5rem; }
+    .hv-stamp-price {
       font-size: 0.75rem;
-      color: var(--ink-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+      color: var(--mint);
+      background: rgba(99, 223, 184, 0.1);
+      border: 1px solid rgba(99, 223, 184, 0.35);
+      padding: 3px 8px;
+      border-radius: 999px;
     }
 
-    .message-box {
-      padding: 14px 16px;
-      border: 1px solid var(--border-soft);
-      border-radius: 10px;
-      background: #ffffff;
-    }
+    .hv-stamp-title { font-weight: 700; font-size: 0.98rem; margin-bottom: 4px; }
+    .hv-stamp-meta { font-size: 0.8rem; color: var(--muted); }
 
-    .stamp-badge {
+    .hv-stamp-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      margin-left: 8px;
-      padding: 3px 10px;
+      gap: 8px;
+      padding: 8px 14px;
       border-radius: 999px;
-      font-size: 0.85rem;
       font-weight: 600;
-      vertical-align: middle;
+      font-size: 0.9rem;
     }
 
-    .stamp-dashed-ink {
-      border: 1.5px dashed var(--ink-dark);
-      background: #f5f2eb;
-      color: var(--ink-dark);
+    .hv-style-dashed-ink { border: 1.5px dashed var(--muted); background: rgba(255, 255, 255, 0.04); }
+    .hv-style-wax-crimson { border: 2px solid var(--crimson); background: rgba(224, 90, 112, 0.14); }
+    .hv-style-wax-gold { border: 2px solid var(--gold); background: rgba(245, 196, 81, 0.14); }
+    .hv-style-custom-border { border: 2px solid var(--mint); background: rgba(99, 223, 184, 0.12); }
+
+    .builder-form {
+      display: grid;
+      grid-template-columns: 110px 1fr 190px auto;
+      gap: 10px;
+      align-items: end;
     }
 
-    .stamp-wax-crimson {
-      border: 1.5px solid var(--crimson);
-      background: #fde8ec;
-      color: var(--crimson);
+    @media (max-width: 720px) {
+      .builder-form { grid-template-columns: 1fr; }
     }
 
-    .stamp-wax-gold {
-      border: 1.5px solid var(--gold);
-      background: #fef3c7;
-      color: #78350f;
-    }
+    label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 4px; }
 
-    .stamp-custom-border {
-      border: 1.5px dashed var(--gold);
-      background: #fffbeb;
-      color: #92400e;
-    }
-
-    .flash-box {
-      display: none;
-      margin-top: 12px;
-      padding: 12px 14px;
-      border-left: 4px solid var(--gold);
-      border-radius: 6px;
-      background: var(--flash-bg);
-      color: var(--ink-dark);
+    input, select, button.btn-primary {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--panel-2);
+      color: var(--text);
       font-size: 0.92rem;
     }
 
-    .flash-box a {
-      margin-left: 6px;
-      font-weight: 600;
-      color: var(--crimson);
+    button.btn-primary {
+      background: var(--gold);
+      color: #131722;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
     }
+
+    .hv-gumroad-flash {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: rgba(245, 196, 81, 0.12);
+      border: 1px solid rgba(245, 196, 81, 0.45);
+      margin-bottom: 18px;
+    }
+
+    .hv-gumroad-flash a {
+      color: var(--gold);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    .hv-payload-note { margin-left: 10px; font-size: 0.82rem; color: var(--muted); }
+    .hv-custom-notice p { margin: 8px 0 0; font-size: 0.88rem; color: var(--muted); }
   </style>
 </head>
 <body>
-  <main class="stamp-app">
-    <header class="stamp-header">
-      <h1>Mail Stamps Board</h1>
-      <p>Pumili ng emoji stamp para i-render sa mensahe o silipin ang Gumroad options.</p>
-    </header>
+  <div class="wrap">
+    <h1>HandleVault Mail &amp; Wax Stamps</h1>
+    <p class="sub">Native Unicode emoji stamps para sa Mail, Invite, at 3D Mail (Free, ₱29 pack / ₱5 add-on local, ₱49+ custom, $1–$5+ abroad).</p>
 
-    <section id="stampGrid" class="stamp-grid" aria-label="Available stamps"></section>
+    <div id="flashContainer" aria-live="polite"></div>
 
-    <section id="messageBox" class="message-box" aria-live="polite">
-      <span class="mail-text">Mail Dispatch: Pumili ng stamp sa board para i-render sa mensahe mo.</span>
+    <section class="section">
+      <h2>Message Stamp Preview</h2>
+      <div id="previewContainer"></div>
     </section>
 
-    <aside id="flashBox" class="flash-box" aria-live="polite"></aside>
-  </main>
+    <section class="section">
+      <h2>Standard &amp; Premium Stamps</h2>
+      <div id="catalogContainer" class="grid"></div>
+    </section>
 
-  <script src="app.js"></script>
+    <section class="section">
+      <h2>Custom Stamp Builder (custom.stamps)</h2>
+      <div id="customContainer" class="grid" style="margin-bottom: 14px;"></div>
+
+      <form id="customForm" class="builder-form">
+        <div>
+          <label for="customEmoji">Emoji</label>
+          <input id="customEmoji" name="emoji" type="text" value="🎯" maxlength="8" />
+        </div>
+        <div>
+          <label for="customTitle">Stamp Label</label>
+          <input id="customTitle" name="title" type="text" placeholder="Hal. VIP Invite Seal" maxlength="32" />
+        </div>
+        <div>
+          <label for="customStyle">Badge Style</label>
+          <select id="customStyle" name="badge_style">
+            <option value="custom-border">Custom Border</option>
+            <option value="wax-crimson">Wax Crimson</option>
+            <option value="wax-gold">Wax Gold</option>
+            <option value="dashed-ink">Dashed Ink</option>
+          </select>
+        </div>
+        <div>
+          <button type="submit" class="btn-primary">Preview Custom</button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <script type="module">
+    import { loadStampsCatalog, renderSplitStampSections, createCustomStampForPreview } from "./app.js";
+
+    const catalogContainer = document.getElementById("catalogContainer");
+    const customContainer = document.getElementById("customContainer");
+    const previewContainer = document.getElementById("previewContainer");
+    const flashContainer = document.getElementById("flashContainer");
+    const customForm = document.getElementById("customForm");
+
+    let stamps = [];
+    let selectedStamp = null;
+
+    function refreshUI() {
+      renderSplitStampSections({
+        catalogContainer,
+        customContainer,
+        previewContainer,
+        flashContainer,
+        stamps,
+        selectedStamp
+      });
+    }
+
+    function handleStampClick(event) {
+      const card = event.target.closest("[data-stamp-id]");
+      if (!card) return;
+      const id = card.getAttribute("data-stamp-id");
+      const found = stamps.find((item) => item.id === id);
+      if (found) {
+        selectedStamp = found;
+        refreshUI();
+      }
+    }
+
+    catalogContainer.addEventListener("click", handleStampClick);
+    customContainer.addEventListener("click", handleStampClick);
+
+    customForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(customForm);
+      selectedStamp = createCustomStampForPreview({
+        emoji: formData.get("emoji"),
+        title: formData.get("title"),
+        badge_style: formData.get("badge_style")
+      });
+      refreshUI();
+    });
+
+    try {
+      stamps = await loadStampsCatalog("./stamps.json");
+      selectedStamp = stamps[0] || null;
+      refreshUI();
+    } catch (err) {
+      previewContainer.innerHTML = `<p style="color:#e05a70;">Hindi ma-load ang stamps.json: ${err.message}</p>`;
+    }
+  </script>
 </body>
 </html>
