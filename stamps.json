@@ -1,0 +1,57 @@
+{
+  "repo": "handlevault-mail-stamps",
+  "pack_name": "HandleVault Mail & Wax Stamps",
+  "art_policy": "native-unicode-emoji-only",
+  "stamps": [
+    {
+      "id": "free-envelope-01",
+      "title": "Standard Dispatch",
+      "emoji": "✉️",
+      "badge_style": "dashed-ink",
+      "tier": "free",
+      "can_render_in_message": true,
+      "flash_message": null,
+      "gumroad_url": null
+    },
+    {
+      "id": "free-note-02",
+      "title": "Quick Postmark",
+      "emoji": "📮",
+      "badge_style": "dashed-ink",
+      "tier": "free",
+      "can_render_in_message": true,
+      "flash_message": null,
+      "gumroad_url": null
+    },
+    {
+      "id": "premium-wax-heart-01",
+      "title": "Wax Seal Heart",
+      "emoji": "💌",
+      "badge_style": "wax-crimson",
+      "tier": "premium",
+      "can_render_in_message": true,
+      "flash_message": "Gusto mo ng Wax Seal Heart stamp para sa mga dispatch mo? Silipin ang pack sa Gumroad.",
+      "gumroad_url": "https://gumroad.com/"
+    },
+    {
+      "id": "premium-star-seal-02",
+      "title": "Starlight Seal",
+      "emoji": "⭐",
+      "badge_style": "wax-gold",
+      "tier": "premium",
+      "can_render_in_message": true,
+      "flash_message": "Available sa Gumroad ang Starlight Seal pack para sa mga special mail drops mo.",
+      "gumroad_url": "https://gumroad.com/"
+    },
+    {
+      "id": "custom-stamp-01",
+      "title": "Custom Mail Stamp",
+      "emoji": "✨",
+      "badge_style": "custom-border",
+      "tier": "custom_fee",
+      "can_render_in_message": false,
+      "flash_message": "May gusto kang custom emoji stamp o sariling label? May custom stamp option sa Gumroad.",
+      "gumroad_url": "https://gumroad.com/"
+    }
+  ]
+}
