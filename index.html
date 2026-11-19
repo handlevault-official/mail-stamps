@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HandleVault Mail Stamps</title>
+  <style>
+    :root {
+      --bg-paper: #faf6ef;
+      --bg-card: #fffdf9;
+      --ink-dark: #231f20;
+      --ink-muted: #5c534c;
+      --crimson: #8f2d3c;
+      --gold: #b45309;
+      --border-soft: #dfd5c5;
+      --flash-bg: #fef3c7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px 16px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-paper);
+      color: var(--ink-dark);
+      line-height: 1.5;
+    }
+
+    .stamp-app {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .stamp-header {
+      margin-bottom: 18px;
+    }
+
+    .stamp-header h1 {
+      margin: 0 0 4px;
+      font-size: 1.5rem;
+    }
+
+    .stamp-header p {
+      margin: 0;
+      color: var(--ink-muted);
+      font-size: 0.95rem;
+    }
+
+    .stamp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .stamp-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 14px 10px;
+      border: 2px dashed var(--crimson);
+      border-radius: 10px;
+      background: var(--bg-card);
+      color: var(--ink-dark);
+      cursor: pointer;
+      text-align: center;
+      transition: transform 0.12s ease, background-color 0.12s ease;
+    }
+
+    .stamp-card:hover,
+    .stamp-card:focus-visible {
+      background: #fff3dc;
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .stamp-emoji {
+      font-size: 1.75rem;
+      line-height: 1.2;
+    }
+
+    .stamp-title {
+      font-size: 0.92rem;
+    }
+
+    .stamp-tier {
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .message-box {
+      padding: 14px 16px;
+      border: 1px solid var(--border-soft);
+      border-radius: 10px;
+      background: #ffffff;
+    }
+
+    .stamp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: 8px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      vertical-align: middle;
+    }
+
+    .stamp-dashed-ink {
+      border: 1.5px dashed var(--ink-dark);
+      background: #f5f2eb;
+      color: var(--ink-dark);
+    }
+
+    .stamp-wax-crimson {
+      border: 1.5px solid var(--crimson);
+      background: #fde8ec;
+      color: var(--crimson);
+    }
+
+    .stamp-wax-gold {
+      border: 1.5px solid var(--gold);
+      background: #fef3c7;
+      color: #78350f;
+    }
+
+    .stamp-custom-border {
+      border: 1.5px dashed var(--gold);
+      background: #fffbeb;
+      color: #92400e;
+    }
+
+    .flash-box {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-left: 4px solid var(--gold);
+      border-radius: 6px;
+      background: var(--flash-bg);
+      color: var(--ink-dark);
+      font-size: 0.92rem;
+    }
+
+    .flash-box a {
+      margin-left: 6px;
+      font-weight: 600;
+      color: var(--crimson);
+    }
+  </style>
+</head>
+<body>
+  <main class="stamp-app">
+    <header class="stamp-header">
+      <h1>Mail Stamps Board</h1>
+      <p>Pumili ng emoji stamp para i-render sa mensahe o silipin ang Gumroad options.</p>
+    </header>
+
+    <section id="stampGrid" class="stamp-grid" aria-label="Available stamps"></section>
+
+    <section id="messageBox" class="message-box" aria-live="polite">
+      <span class="mail-text">Mail Dispatch: Pumili ng stamp sa board para i-render sa mensahe mo.</span>
+    </section>
+
+    <aside id="flashBox" class="flash-box" aria-live="polite"></aside>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
